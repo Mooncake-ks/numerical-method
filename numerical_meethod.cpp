@@ -16,13 +16,13 @@ double f(double x)
     return 1/log(x);
 }
 
-double Trapeze(double a, double b, int n,double (*f)(double))
+double Trapeze(double a, double b, int n,double (*ptr_f)(double))
 {
     double h=(b-a)/n;
-    double sum = f(a)+f(b);
+    double sum = ptr_f(a)+ptr_f(b);
     for (int i = 1; i <= n-1; i++)
     {
-        sum += 2 * f(a+i*h);
+        sum += 2 * ptr_f(a+i*h);
     }
     sum *= h / 2;
     return sum;
