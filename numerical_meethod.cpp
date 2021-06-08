@@ -1,12 +1,12 @@
 ﻿#include <iostream>
 #include <math.h>
-double f(double x);
-double Trapeze(double ,double,int);
+double f(double );
+double Trapeze(double ,double,int,double(*)(double));
 int main()
 {
     double a=2, b=5;
     int n=3;
-    std::cout << Trapeze(a,b,n) << std::endl;
+    std::cout << Trapeze(a,b,n,f) << std::endl;
     system("pause");
     return 0;
 }
@@ -16,7 +16,7 @@ double f(double x)
     return 1/log(x);
 }
 
-double Trapeze(double a, double b, int n)
+double Trapeze(double a, double b, int n,double (*f)(double))
 {
     double h=(b-a)/n;
     double sum = f(a)+f(b);
